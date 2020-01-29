@@ -23,4 +23,32 @@ Attached to this repo are the following files:-
 In each of the above configuration files the C# service(s) there is a <source> tag element for each C# service.  The log file specified in each <source> tag element is the file that gets
 pushed to Stackdriver. 
 
+## Configure windows services to log a message to a file when an unexpected failure occures
+
+    On the Blaise c# windows service, right click and goto the properties.  Go to the recovery tab, ensure the following:-
+    
+        First Failure: set to "Restart the service"
+
+        Second Failure: set to "Run a Program"
+
+        In the program text box enter: path to powershell.exe e.g. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+        In the 'command' text box enter: <command for running powershell script> e.g. Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName <servicename> 
+
+            replace <servicename> with relevant c# service that you are setting this up for. e.g. Powershell -c     C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
+    
+    
+    Service	                            Command line param
+    
+    BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName                                                           BlaiseProcessMessageService
+
+    BlaiseCaseBackup                    Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
+    
+    
+    
+    
+    
+    
+    
+    
 
