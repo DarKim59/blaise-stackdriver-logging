@@ -37,13 +37,17 @@ pushed to Stackdriver.
 
             replace <servicename> with relevant c# service that you are setting this up for. e.g. Powershell -c     C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
     
-    
+      
+
     Service	                            Command line param
     
-    BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName                                                           BlaiseProcessMessageService
+    BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName  BlaiseProcessMessageService
 
     BlaiseCaseBackup                    Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
     
+
+    The above powershell script referenced creates and/or appends to a log file called TEL_BlaiseServices_Failure.log in C:\BlaiseServices folder
+
     
     
     
