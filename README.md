@@ -17,8 +17,8 @@ The custom configurations are installed into C:\Program Files (x86)\Stackdriver\
 
 Attached to this repo are the following files:-
 
-custom-log VAL.conf
-custom-log TEL.conf
+    custom-log VAL.conf
+    custom-log TEL.conf
 
 In each of the above configuration files the C# service(s) there is a <source> tag element for each C# service.  The log file specified in each <source> tag element is the file that gets
 pushed to Stackdriver. 
