@@ -38,10 +38,11 @@ pushed to Stackdriver.
                 replace <servicename> with relevant c# service that you are setting this up for. e.g. Powershell -c     C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
     
       
+        e.g. Command line example for 2 of the windows services
 
         Service	                            Command line param
     
-        BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName  BlaiseProcessMessageService
+        BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseProcessMessageService
 
         BlaiseCaseBackup                    Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
     
