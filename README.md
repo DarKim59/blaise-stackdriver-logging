@@ -25,28 +25,30 @@ pushed to Stackdriver.
 
 ## Configure windows services to log a message to a file when an unexpected failure occures
 
-    On the Blaise c# windows service, right click and goto the properties.  Go to the recovery tab, ensure the following:-
+    1. On the Blaise c# windows service, right click and goto the properties.  Go to the recovery tab, ensure the following:-
     
-        First Failure: set to "Restart the service"
+            First Failure: set to "Restart the service"
 
-        Second Failure: set to "Run a Program"
+            Second Failure: set to "Run a Program"
 
-        In the program text box enter: path to powershell.exe e.g. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+            In the program text box enter: path to powershell.exe e.g. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
-        In the 'command' text box enter: <command for running powershell script> e.g. Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName <servicename> 
+            In the 'command' text box enter: <command for running powershell script> e.g. Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName <servicename> 
 
-            replace <servicename> with relevant c# service that you are setting this up for. e.g. Powershell -c     C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
+                replace <servicename> with relevant c# service that you are setting this up for. e.g. Powershell -c     C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
     
       
 
-    Service	                            Command line param
+        Service	                            Command line param
     
-    BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName  BlaiseProcessMessageService
+        BlaiseProcessMessageService	        Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName  BlaiseProcessMessageService
 
-    BlaiseCaseBackup                    Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
+        BlaiseCaseBackup                    Powershell -c C:\dev\TEL_LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
     
 
-    The above powershell script referenced creates and/or appends to a log file called TEL_BlaiseServices_Failure.log in C:\BlaiseServices folder
+        The above powershell script referenced creates and/or appends to a log file called TEL_BlaiseServices_Failure.log in C:\BlaiseServices folder
+
+    2. Copy the powershell script (TEL_LogServiceStopped_unexpected_failure.ps1) from the repo into C:\dev folder on the VM
 
     
     
