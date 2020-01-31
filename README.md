@@ -23,6 +23,12 @@ Attached to this repo are the following files:-
 In each of the above configuration files the C# service(s) there is a <source> tag element for each C# service.  The log file specified in each <source> tag element is the file that gets
 pushed to Stackdriver. 
 
+## Set up: (currently there is a manual option to copy file to the VM's')
+
+1. Copy the .conf in the repo to the VM
+2. Copy LogServiceStopped_unexpected_failure.ps1 into the C:|BlaiseServices\ folder on the VM.
+
+
 ## The following configuration below (manual option) is done automatically by the Azure pipelines for all c# services. No manual configuration of the winodows service is required now.  Left below description for information.
 
 ## MANUAL - Configure windows services to log a message to a file when an unexpected failure occures
