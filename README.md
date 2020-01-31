@@ -23,7 +23,9 @@ Attached to this repo are the following files:-
 In each of the above configuration files the C# service(s) there is a <source> tag element for each C# service.  The log file specified in each <source> tag element is the file that gets
 pushed to Stackdriver. 
 
-## Configure windows services to log a message to a file when an unexpected failure occures
+## The following configuration below (manual option) is done automatically by the Azure pipelines for all c# services. No manual configuration of the winodows service is required now.  Left below description for information.
+
+## MANUAL - Configure windows services to log a message to a file when an unexpected failure occures
 
     1. On the Blaise c# windows service, right click and goto the properties.  Go to the recovery tab, ensure the following:-
     
