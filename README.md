@@ -23,9 +23,9 @@ Attached to this repo are the following files:-
 In each of the above configuration files the C# service(s) there is a <source> tag element for each C# service.  The log file specified in each <source> tag element is the file that gets
 pushed to Stackdriver. 
 
-## Set up: (currently there is a manual option to copy file to the VM's')
+## Set up: (currently there are two  manual options to copy file(s) to the VM's)
 
-1. Copy the .conf in the repo to the VM
+1. Copy the .conf in the repo to the relevent VM, place file into the C:\Program Files (x86)\Stackdriver\LoggingAgent\config.d folder.  Restart the StackDriver windows service for any changes to take affect.
 2. Copy LogServiceStopped_unexpected_failure.ps1 into the C:|BlaiseServices\ folder on the VM.
 
 
