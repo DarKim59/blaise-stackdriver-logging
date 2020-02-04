@@ -4,7 +4,7 @@ cd $env:UserProfile;
 
 "Download complete - Now running exe"
 
-& 'C:\dev\StackdriverLogging-v1-10.exe' /S /D="C:\BlaiseServices\Stackdriver\Logging\"
+& 'C:\dev\StackdriverLogging-v1-10.exe' /S /D="C:\BlaiseServices\Stackdriver\Logging\" > C:\dev\stackdriver_output_log.txt
 
 if($LASTEXITCODE -eq 0)
 {
