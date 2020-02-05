@@ -1,0 +1,1 @@
+C:\BlaiseServices\Stackdriver\Stackdriver_Install_main.ps1 > C:\Blaiseservices\Stackdriver\install_output.txt
