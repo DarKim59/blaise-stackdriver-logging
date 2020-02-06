@@ -14,16 +14,16 @@ The custom configurations for Stackdriver are installed into C:\BlaiseServices\S
 
 Attached to this repo are the following files:-
 
-   custom-log VAL.conf - custom config for VAL server to tell Stackdriver which logs to pick up.
-   custom-log TEL.conf - custom config for TEL server to tell Stackdriver which logs to pick up.
+   **custom-log VAL.conf** - custom config for VAL server to tell Stackdriver which logs to pick up.
+   **custom-log TEL.conf** - custom config for TEL server to tell Stackdriver which logs to pick up.
 
    In each of the above configuration files the C# service(s) there is a <source> tag element for each C# service.  The log file specified in each <source> tag element is the file that gets pushed to Stackdriver. 
 
-   stackdriver.ps1 - This powershell script calls Stackdriver_Install_main.ps1 - and outputs to a txt file for logging purposes. This is the powershell script that gets called within the 'Stackdriver Delpoy' task group.
+   **stackdriver.ps1** - This powershell script calls Stackdriver_Install_main.ps1 - and outputs to a txt file for logging purposes. This is the powershell script that gets called within the 'Stackdriver Delpoy' task group.
 
-   Stackdriver_Install_main.ps1 - This powershell script does an uninstall (if necessary) and re-install of Stackdriver
+   **Stackdriver_Install_main.ps1** - This powershell script does an uninstall (if necessary) and re-install of Stackdriver
     
-   LogServiceStopped_unexpected_failure.ps1 - this creates a log file called BlaiseServices_Failure.log in C:\BlaiseServices\
+   **LogServiceStopped_unexpected_failure.ps1** - this creates a log file called BlaiseServices_Failure.log in C:\BlaiseServices\
 
 
 ## Azure Pipeline for Stackdriver
