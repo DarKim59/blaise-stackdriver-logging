@@ -1,14 +1,14 @@
 # blaise-stackdriver-logging
 
-This contains stackdriver logging / monitoring and configurations for the Blaise VM's
+This repo contains stackdriver logging configurations for the Blaise VM's
 
-https://cloud.google.com/logging/docs/agent/installation#agent-install-windows
+The verison of Stackdriver that is currently installed is as per this url https://cloud.google.com/logging/docs/agent/installation#agent-install-windows, so version 1.10
 
-For the purposes of Blaise - we are streaming the log files from all of the C# services.
+For the purposes of Blaise - we are telling Stackdriver to follow log files from all of the C# services (except BlaiseUserSync).
 
-This is done by customising the logging agent to send additional logs to Logging by adding input configurations. For example https://cloud.google.com/logging/docs/agent/configuration#configure
+This is done by customising the logging agent to send additional logs to Logging. For example https://cloud.google.com/logging/docs/agent/configuration#configure
 
-Stackdriver is installed into C:\BlaiseServices\Stackdriver\LoggingAgent\
+Stackdriver is installed 'hands free' via the Azure pipeline / release and is installed into C:\BlaiseServices\Stackdriver\LoggingAgent\ on the relevent VM.
 
 The custom configurations for Stackdriver are installed into C:\BlaiseServices\Stackdriver\LoggingAgent\config.d directory. 
 
