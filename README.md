@@ -21,7 +21,9 @@ Attached to this repo are the following files:-
 
     stackdriver.ps1 - This powershell script calls Stackdriver_Install_main.ps1 - and outputs to a txt file for logging purposes. This is the powershell script that gets called within the 'Stackdriver Delpoy' task group.
 
-Stackdriver_Install_main.ps1 - This powershell script does an uninstall (if necessary) and re-install of Stackdriver
+    Stackdriver_Install_main.ps1 - This powershell script does an uninstall (if necessary) and re-install of Stackdriver
+    
+    LogServiceStopped_unexpected_failure.ps1 - this creates a log file called BlaiseServices_Failure.log in C:\BlaiseServices\
 
 
 ## Azure Pipeline for Stackdriver
@@ -39,10 +41,15 @@ This does the following:
         - Stops and deletes the Stackdriver windows service if its running
         - Runs ps script stackdriver.ps1 - which in turns runs Stackdriver_Install_main.ps1
     
-##     
+## Blaise windows services configuration for unexpected failures
 
+All of the Blaise windows services (except for BlaiseUserSync) are configured via the Azure Release pipeline in the following way in case of an unexpected failure of the windows service:-
 
+    First Failure: set to "Restart the service"
 
-    
-    
+    Second Failure: set to "Run a Program"
 
+    The program that runs is C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    with the 'command' of "Powershell -c C:\BlaiseServices\LogServiceStopped_unexpected_failure.ps1 -ServiceName <servicename>".  Note: <servicename> is replaced with the relevant c# service during the pipeline e.g. Powershell -c    C:\BlaiseServices\LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
+
+    The above powershell script (LogServiceStopped_unexpected_failure.ps1) creates and/or appends to a log file called BlaiseServices_Failure.log in C:\BlaiseServices\ folder - ( Writing to a 'temp' log file initially and then to BlaiseServices_Failure.log - this is to avoid any read/write violations).
