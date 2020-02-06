@@ -53,3 +53,5 @@ All of the Blaise windows services (except for BlaiseUserSync) are configured vi
     with the 'command' of "Powershell -c C:\BlaiseServices\LogServiceStopped_unexpected_failure.ps1 -ServiceName <servicename>".  Note: <servicename> is replaced with the relevant c# service during the pipeline e.g. Powershell -c    C:\BlaiseServices\LogServiceStopped_unexpected_failure.ps1 -ServiceName BlaiseCaseBackup
 
     The above powershell script (LogServiceStopped_unexpected_failure.ps1) creates and/or appends to a log file called BlaiseServices_Failure.log in C:\BlaiseServices\ folder - ( Writing to a 'temp' log file initially and then to BlaiseServices_Failure.log - this is to avoid any read/write violations).
+
+The above is achieved using the 'sc failure' command(s) as part of the 'Create Service' command line task that is part of the Azure release for each of the Blaise windows service pipelines.
