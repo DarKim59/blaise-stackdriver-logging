@@ -2,13 +2,12 @@
 
 This repo contains stackdriver logging configurations for the Blaise VM's
 
-The verison of Stackdriver that is currently installed is as per this url https://cloud.google.com/logging/docs/agent/installation#agent-install-windows, so version 1.10
+- Stackdriver is installed 'hands free' via the Azure pipeline / release and is installed into C:\BlaiseServices\Stackdriver\LoggingAgent\ on the relevent VM.
 
-For the purposes of Blaise - we are telling Stackdriver to follow log files from all of the C# services (except BlaiseUserSync).
+- The version of Stackdriver that is currently installed is as per the version specified by Google, so at time of writing version 1.10.  e.g. see https://cloud.google.com/logging/docs/agent/installation#agent-install-windows
 
-This is done by customising the logging agent to send additional logs to Logging. For example https://cloud.google.com/logging/docs/agent/configuration#configure
-
-Stackdriver is installed 'hands free' via the Azure pipeline / release and is installed into C:\BlaiseServices\Stackdriver\LoggingAgent\ on the relevent VM.
+- For the purposes of Blaise - we are sending all of the C# services logs to Stackdriver (except BlaiseUserSync).
+This is done by customising the logging agent via some custom configuration files (see below). e.g. https://cloud.google.com/logging/docs/agent/configuration#configure
 
 The custom configurations for Stackdriver are installed into C:\BlaiseServices\Stackdriver\LoggingAgent\config.d directory. 
 
@@ -54,3 +53,5 @@ All of the Blaise windows services (except for BlaiseUserSync) are configured vi
     with the 'command' of "Powershell -c C:\BlaiseServices\logservicestopped-unexpected-failure.ps1 -ServiceName <servicename>".  Note: <servicename> is replaced with the relevant c# service during the pipeline e.g. Powershell -c    C:\BlaiseServices\logservicestopped-unexpected-failure.ps1 -ServiceName BlaiseCaseBackup
 
     The above powershell script (logservicestopped-unexpected-failure.ps1) creates and/or appends to a log file called BlaiseServices_Failure.log in C:\BlaiseServices\ folder - ( Writing to a 'temp' log file initially and then to BlaiseServices_Failure.log - this is to avoid any read/write violations).
+
+The above is achieved using the 'sc failure' command(s) as part of the 'Create Service' command line task that is part of the Azure release for each of the Blaise windows service pipelines.
